@@ -105,8 +105,10 @@ $(function(){
         // 还没有追加菜单则加上菜单
         if(!$(this).data("loadmenu")) {
             var target = $(this).find(".music-name");
-            var html = '<span class="music-name-cult">' + 
+            var html = '<span class="music-name-cult">' +
+                '<span title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">'+
             target.html() + 
+                '</span>' +
             '</span>' +
             '<div class="list-menu" data-no="' + num + '">' +
                 '<span class="list-icon icon-play" data-function="play" title="点击播放这首歌"></span>' +
@@ -564,9 +566,9 @@ function addItem(no, name, auth, album) {
     var html = '<div class="list-item" data-no="' + (no - 1) + '">' +
     '    <span class="list-num">' + no + '</span>' +
     '    <span class="list-mobile-menu"></span>' +
-    '    <span class="music-album" title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + album + '</span>' +
-    '    <span class="auth-name" title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + auth + '</span>' +
-    '    <span class="music-name" title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + name + '</span>' +
+        '    <span class="music-album"><span title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + album + '</span></span>' +
+    '    <span class="auth-name"><span title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + auth + '</span></span>' +
+    '    <span class="music-name" >' + name + '</span>' +
     '</div>'; 
     rem.mainList.append(html);
 }
