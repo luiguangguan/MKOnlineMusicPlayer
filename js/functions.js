@@ -564,11 +564,21 @@ function addItem(no, name, auth, album) {
     var html = '<div class="list-item" data-no="' + (no - 1) + '">' +
     '    <span class="list-num">' + no + '</span>' +
     '    <span class="list-mobile-menu"></span>' +
-    '    <span class="music-album">' + album + '</span>' +
-    '    <span class="auth-name">' + auth + '</span>' +
-    '    <span class="music-name">' + name + '</span>' +
+    '    <span class="music-album" title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + album + '</span>' +
+    '    <span class="auth-name" title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + auth + '</span>' +
+    '    <span class="music-name" title="搜索它" style="cursor: pointer;" onclick="searchName($(this).text())">' + name + '</span>' +
     '</div>'; 
     rem.mainList.append(html);
+}
+
+// 根据名称搜索结果(使用默认选中的API搜索)
+// 参数：歌曲名称或歌手
+function searchName(name) {
+    searchBox();
+    var originalVal = $("#search-wd").val();
+    $("#search-wd").val(name);
+    searchSubmit();
+    $("#search-wd").val(originalVal);
 }
 
 // 加载列表中的提示条
